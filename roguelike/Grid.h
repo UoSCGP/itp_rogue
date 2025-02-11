@@ -4,7 +4,7 @@
 #include <random>
 
 #include "Enemy.h"
-
+#include "Player.h"
 #include "Item.h"
 
 class Grid {
@@ -75,7 +75,7 @@ public:
 
 private:
 	//Inventory variables
-	std::vector<int> inventory = { 0, 0, 0, 0 };
+	// std::vector<int> inventory = { 0, 0, 0, 0 };
 	std::vector<int> itemLimit = { 100, 100, 100, 100 };
 	enum invEnum { treasure, potion, weapon, armour };
 

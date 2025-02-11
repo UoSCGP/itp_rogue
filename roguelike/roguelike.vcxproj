@@ -129,7 +129,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Attack.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="Item.cpp" />

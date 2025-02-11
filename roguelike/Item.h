@@ -3,6 +3,8 @@
 #include <vector>
 #include <iostream>
 
+class Player;
+
 enum ItemType
 {
 	armour,
@@ -31,10 +33,6 @@ public:
 	Item() {}
 protected:
 	ItemType _type{ ItemType::weapon };
-};
-
-struct Player {
-	int health{ 100 };
 };
 
 class PotionItem : public Item

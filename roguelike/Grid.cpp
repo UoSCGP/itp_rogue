@@ -66,7 +66,8 @@ void Grid::moveUp()
 
 		if (playerX - 1 == enemyX && playerY == enemyY)
 		{
-			player.DoAttack();
+			// Doesn't actually do anything. 
+			player.DoAttack(0, 0);
 		}
 		playerX--;
 		enemy.MoveTowardsPlayer(playerX, playerY, grid, _colSize, _rowSize);
@@ -91,7 +92,8 @@ void Grid::moveDown()
 
 		if (playerX + 1 == enemyX && playerY == enemyY)
 		{
-			player.DoAttack();
+			// Doesn't actually do anything. 
+			player.DoAttack(0, 0);
 		}
 		playerX++;
 		enemy.MoveTowardsPlayer(playerX, playerY, grid, _colSize, _rowSize);
@@ -115,7 +117,8 @@ void Grid::moveLeft()
 
 		if (playerX == enemyX && playerY - 1 == enemyY)
 		{
-			player.DoAttack();
+			// Doesn't actually do anything. 
+			player.DoAttack(0, 0);
 		}
 		playerY--;
 		enemy.MoveTowardsPlayer(playerX, playerY, grid, _colSize, _rowSize);
@@ -139,7 +142,8 @@ void Grid::moveRight()
 
 		if (playerX == enemyX && playerY + 1 == enemyY)
 		{
-			player.DoAttack();
+			// Doesn't actually do anything. 
+			player.DoAttack(0, 0);
 		}
 		playerY++;
 		enemy.MoveTowardsPlayer(playerX, playerY, grid, _colSize, _rowSize);
@@ -210,15 +214,15 @@ void Grid::ItemCollected(int defense, int damage, int healthHealed)
 	inventory.push_back(newItem);
 }
 
-void Grid::collectTreasure()
-{
-	grid[playerX][playerY] = emptySymbol;
-	treasureRemaining--;
-}
+//void Grid::collectTreasure()
+//{
+//	grid[playerX][playerY] = emptySymbol;
+//	treasureRemaining--;
+//}
 
 void Grid::collectItem(int item)
 {
-	if (inventory[item] < itemLimit[item])
+	/*if (inventory[item] < itemLimit[item])
 	{
 		grid[playerX][playerY] = emptySymbol;
 		if (item == invEnum::treasure)
@@ -226,7 +230,7 @@ void Grid::collectItem(int item)
 		updateInventory(item, 1);
 	}
 	else
-		shouldPrintFullMessage = true;
+		shouldPrintFullMessage = true;*/
 }
 
 void Grid::printInventory()

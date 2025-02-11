@@ -1,12 +1,8 @@
 #include <iostream>
 #include <array>
-
 #include <random>
-
 #include <Windows.h>
-
 #include "Grid.h"
-
 #include "Player.h"
 
 int main()
@@ -21,7 +17,7 @@ int main()
 
 	while (isRunning)
 	{
-		//system("cls");
+		system("cls");
 		grid.print_dungeon();
 
 		if (grid.isDamaged) {
