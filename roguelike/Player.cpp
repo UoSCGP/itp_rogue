@@ -3,12 +3,25 @@
 #include <stdlib.h>
 #include <iostream>
 
+// Attack an enemy.
 void Player::DoAttack(int x, int y) {
 	int damageDelt = rand() % 11;
 
 	std::cout << damageDelt;
 }
 
+// This should be on the enemy class.
+void Player::CheckForPlayer(Enemy& enemy)
+{
+	_isDamaged = enemy.CheckForPlayer(_x, _y);
+
+	if (_isDamaged)
+	{
+		ReceiveAttack(enemy);
+	}
+}
+
+// Receive an attack from an enemy. 
 void Player::ReceiveAttack(Enemy& enemy)
 {
 	// We've just taken damage from an enemy.
@@ -18,15 +31,6 @@ void Player::ReceiveAttack(Enemy& enemy)
 	_health -= _lastDamage;
 }
 
-void Player::CheckForDamage(Enemy& enemy)
-{
-	_isDamaged = enemy.CheckForPlayer(x, y);
-
-	if (_isDamaged)
-	{
-		ReceiveAttack(enemy);
-	}
-}
 
 void Player::ResetDamageState()
 {

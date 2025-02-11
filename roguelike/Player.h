@@ -10,7 +10,7 @@ private:
 	int _lastDamage{ 0 };
 	bool _isDamaged{ false };
 	
-	int _health{ 100 };
+	int _health{ 20 };
 public:
 	// Position
 	int GetX() const { return _x; }
@@ -29,7 +29,7 @@ public:
 
 	// Receiving attack
 	void ReceiveAttack(Enemy& enemy);
-	void CheckForDamage(Enemy& enemy);
+	void CheckForPlayer(Enemy& enemy);
 
 	void ResetDamageState();
 
