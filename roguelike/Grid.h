@@ -67,11 +67,8 @@ public:
 
 	void ItemCollected(int defense, int damage, int healthHealed);
 
-	
-	bool isDamaged{ false };
-	int GetDamage() { return lastDamage; }
+
 	void ResetDamageState();
-	int GetHealth() { return health; }
 
 private:
 	//Inventory variables
@@ -88,8 +85,6 @@ private:
 	void initialize_cells();
 	void generate_dungeon();
 
-	void ReceiveAttack();
-
 	std::vector< std::vector<char>> grid;
 
 	std::random_device rd;
@@ -98,14 +93,10 @@ private:
 	int _rowSize;
 	int _colSize;
 
-	int playerX{ 0 };
-	int playerY{ 0 };
-
 	Enemy enemy;
 	Player player;
 
 	int health{ 20 };
-	int lastDamage{ 0 };
 
 	std::vector<Item*> inventory;
 };

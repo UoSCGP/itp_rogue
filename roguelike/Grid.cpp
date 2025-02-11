@@ -46,16 +46,6 @@ void Grid::print_dungeon()
 
 }
 
-int Grid::GetPlayerX() 
-{
-	return this->playerX;
-}
-
-int Grid::GetPlayerY() 
-{
-	return this->playerY;
-}
-
 void Grid::moveUp()
 {
 	if ((playerX > 1) && 
@@ -73,12 +63,7 @@ void Grid::moveUp()
 		enemy.MoveTowardsPlayer(playerX, playerY, grid, _colSize, _rowSize);
 	}
 
-	this->isDamaged = enemy.CheckForPlayer(playerX, playerY);
-
-	if (isDamaged) 
-	{
-		ReceiveAttack();
-	}
+	player.CheckForDamage(enemy);
 }
 
 void Grid::moveDown()
@@ -99,12 +84,7 @@ void Grid::moveDown()
 		enemy.MoveTowardsPlayer(playerX, playerY, grid, _colSize, _rowSize);
 	}
 	
-	this->isDamaged = enemy.CheckForPlayer(playerX, playerY);
-
-	if (isDamaged)
-	{
-		ReceiveAttack();
-	}
+	player.CheckForDamage(enemy);
 }
 
 void Grid::moveLeft()
@@ -124,12 +104,7 @@ void Grid::moveLeft()
 		enemy.MoveTowardsPlayer(playerX, playerY, grid, _colSize, _rowSize);
 	}
 
-	this->isDamaged = enemy.CheckForPlayer(playerX, playerY);
-
-	if (isDamaged)
-	{
-		ReceiveAttack();
-	}
+	player.CheckForDamage(enemy);
 }
 
 void Grid::moveRight()
@@ -149,12 +124,7 @@ void Grid::moveRight()
 		enemy.MoveTowardsPlayer(playerX, playerY, grid, _colSize, _rowSize);
 	}
 
-	this->isDamaged = enemy.CheckForPlayer(playerX, playerY);
-
-	if (isDamaged)
-	{
-		ReceiveAttack();
-	}
+	player.CheckForDamage(enemy);
 }
 
 bool Grid::checkForTreasure()
@@ -328,20 +298,4 @@ void Grid::generate_dungeon()
 
 	enemy.setPosition(x, y);
 	grid[x][y] = exitSymbol;
-}
-
-// This needs to be moved into a player class.
-void Grid::ReceiveAttack()
-{
-	// We've just taken damage from an enemy.
-	isDamaged = true; 
-
-	lastDamage = enemy.GetAttackDamage();
-	health -= lastDamage;
-}
-
-void Grid::ResetDamageState() 
-{
-	isDamaged = false;
-	lastDamage = 0;
 }

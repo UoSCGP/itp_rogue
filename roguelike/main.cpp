@@ -20,11 +20,11 @@ int main()
 		system("cls");
 		grid.print_dungeon();
 
-		if (grid.isDamaged) {
-			std::cout << "You were hit for " << grid.GetDamage() << std::endl; 
+		if (player.IsDamaged()) {
+			std::cout << "You were hit for " << player.GetLastDamageAmount() << std::endl; 
 		}
 
-		if (grid.GetHealth() <= 0)
+		if (player.GetHealth() <= 0)
 		{ 
 			std::cout << "You are dead!";
 			isRunning = false;
