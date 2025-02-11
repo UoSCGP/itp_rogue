@@ -33,3 +33,4 @@ void Player::ResetDamageState()
 	_isDamaged = false;
 	_lastDamage = 0;
 }
+

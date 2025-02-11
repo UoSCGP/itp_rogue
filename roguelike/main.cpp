@@ -10,8 +10,8 @@ int main()
 	const int ColumnSize = 100;
 	const int RowSize = 20;
 
-	Grid grid(RowSize, ColumnSize);
 	Player player;
+	Grid grid(RowSize, ColumnSize, &player);
 
 	bool isRunning{ true };
 

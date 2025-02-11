@@ -9,9 +9,10 @@
 
 class Grid {
 public:
-	Grid(int rowSize, int columnSize) 
+	Grid(int rowSize, int columnSize, Player *playerPtr) 
 		: _rowSize{rowSize},
 		  _colSize{columnSize},
+		_player{playerPtr},
 			mt{rd()},
 		enemy{3, 4}
 	{
@@ -94,7 +95,7 @@ private:
 	int _colSize;
 
 	Enemy enemy;
-	Player player;
+	Player *_player;
 
 	int health{ 20 };
 
