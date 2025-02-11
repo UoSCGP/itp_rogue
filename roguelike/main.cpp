@@ -4,6 +4,7 @@
 #include <Windows.h>
 #include "Grid.h"
 #include "Player.h"
+#include "Enemy.h"
 
 int main()
 {
@@ -12,6 +13,9 @@ int main()
 
 	Player player;
 	Grid grid(RowSize, ColumnSize, &player);
+
+	// Set the player reference for the Enemy class.
+	
 
 	bool isRunning{ true };
 
