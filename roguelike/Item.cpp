@@ -7,6 +7,7 @@
 
 #include "Grid.h"
 #include "Item.h"
+#include "Player.h"
 
 const char Item::itemSymbol = '$';
 

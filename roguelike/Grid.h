@@ -7,6 +7,8 @@
 
 #include "Item.h"
 
+#include "Player.h"
+
 class Grid {
 public:
 	Grid(int rowSize, int columnSize) 
@@ -53,7 +55,6 @@ public:
 
 	void printInventory();
 	void checkInventory();
-	void updateInventory(int itemNumber, int amount);
 	int GetPlayerX();
 	int GetPlayerY();
 
@@ -64,9 +65,6 @@ public:
 	static const char wallSymbol;
 	static const char emptySymbol;
 	static const char exitSymbol;
-
-	void ItemCollected();
-
 	
 	bool isDamaged{ false };
 	int GetDamage() { return lastDamage; }
@@ -78,7 +76,6 @@ private:
 	bool shouldPrintFullMessage{ false };
 
 	int treasureRemaining{ 0 };
-	void collectItem(int item);
 
 	void initialize_cells();
 	void generate_dungeon();
@@ -101,6 +98,4 @@ private:
 
 	int health{ 20 };
 	int lastDamage{ 0 };
-
-	std::vector<Item*> inventory;
 };

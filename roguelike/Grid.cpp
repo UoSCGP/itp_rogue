@@ -33,9 +33,12 @@ void Grid::print_dungeon()
 		}
 		std::cout << '\n';
 	}
+
+	printInventory();
+
 	if (shouldPrintInv)
 	{
-		printInventory();
+		
 		shouldPrintInv = false;
 	}
 	else if (shouldPrintFullMessage)
@@ -43,6 +46,7 @@ void Grid::print_dungeon()
 		std::cout << "Can't hold more of item!";
 		shouldPrintFullMessage = false;
 	}
+
 
 }
 
@@ -155,7 +159,12 @@ void Grid::moveRight()
 
 bool Grid::checkForTreasure()
 {
-	ItemCollected();
+	//ItemCollected();
+	if (grid[playerX][playerY] == Item::itemSymbol)
+	{
+		grid[playerX][playerY] = emptySymbol;
+		player.PickUpItem();
+	}
 
 	return false;
 }
@@ -168,40 +177,6 @@ bool Grid::checkForExit()
 	}
 
 	return false;
-}
-
-void Grid::ItemCollected()
-{
-	std::uniform_int_distribution<> item_dist(0, ItemType::potion);
-
-	std::uniform_int_distribution<> defense_dist(Item::minDefense, Item::maxDefense);
-	std::uniform_int_distribution<> damage_dist(Item::minDamage, Item::maxDamage);
-	std::uniform_int_distribution<> range_dist(0, Item::maxRange);
-	std::uniform_int_distribution<> heal_dist(1, Item::maxHeal);
-
-	ItemType itemType = (ItemType)item_dist(mt);
-
-	Item* newItem;
-
-	switch (itemType) {
-	case ItemType::armour:
-		newItem = new ArmourItem(defense_dist(mt));
-		std::cout << *(ArmourItem*)newItem << '\n';
-		break;
-
-	case ItemType::potion:
-		newItem = new PotionItem(heal_dist(mt));
-		std::cout << *(PotionItem*)newItem << '\n';
-		break;
-
-	default:
-	case ItemType::weapon:
-		newItem = new WeaponItem(damage_dist(mt), range_dist(mt));
-		std::cout << *(WeaponItem*)newItem << '\n';
-		break;
-	}
-
-	inventory.push_back(newItem);
 }
 
 //void Grid::collectTreasure()
@@ -225,20 +200,29 @@ void Grid::ItemCollected()
 
 void Grid::printInventory()
 {
-//	std::cout << "Treasure = " << inventory[invEnum::treasure] << 
-//		" Potions = " << inventory[invEnum::potion] <<
-//		" Weapons = " << inventory[invEnum::weapon] <<
-//		" Armour = " << inventory[invEnum::armour] << '\n';
-}
+	//Call inventory.GetInventory
+	auto inventoryCount = player.GetInventoryStats();
+
+	std::cout << "armour Items: " << inventoryCount[0] << " weapon Items: " << inventoryCount[1] << " potion Items: " << inventoryCount[2] << '\n';
+ }
 
 void Grid::checkInventory()
 {
-	shouldPrintInv = true;
-}
+	int choice;
+	int equip;
 
-void Grid::updateInventory(int itemNumber, int amount)
-{
-	inventory[itemNumber] += amount;
+	std::cout << "select the item type to view: (1: armour, 2: weapons, 3: potions)\n";
+	std::cin >> choice;
+
+	if (choice == 1)
+	{
+		player.PrintItems(ItemType::armour);
+
+		std::cout << "select the item to equip: ";
+		std::cin >> equip;
+
+		player.EquipArmour(equip);
+	}
 }
 
 void Grid::initialize_cells()
@@ -284,7 +268,7 @@ void Grid::generate_dungeon()
 
 		if (stepsTaken > 0 && stepsTaken % 250 == 0)
 		{
-			grid[x][y] = treasureSymbol;
+			grid[x][y] = Item::itemSymbol;
 			treasureRemaining++;
 		}
 

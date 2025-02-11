@@ -21,7 +21,7 @@ int main()
 
 	while (isRunning)
 	{
-		//system("cls");
+		system("cls");
 		grid.print_dungeon();
 
 		if (grid.isDamaged) {
