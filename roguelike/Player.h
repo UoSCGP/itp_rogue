@@ -19,6 +19,8 @@ public:
 	void SetX(int newX) { _x = newX; }
 	void SetY(int newY) { _y = newY; }
 
+	void SetPosition(int x, int y) { _x = x; _y = y; }
+
 	// Health
 	int GetHealth() const { return _health; }
 	bool IsDamaged() const { return _isDamaged; }
@@ -28,8 +30,8 @@ public:
 	void DoAttack(int x, int y);
 
 	// Receiving attack
-	void ReceiveAttack(Enemy& enemy);
 	void CheckForPlayer(Enemy& enemy);
+	void ReceiveAttack(Enemy& enemy);
 
 	void ResetDamageState();
 
