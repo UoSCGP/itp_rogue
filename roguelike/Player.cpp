@@ -11,15 +11,15 @@ void Player::DoAttack(int x, int y) {
 }
 
 // TODO: Move this to the enemy class.
-void Player::CheckForPlayer(Enemy& enemy)
-{
-	_isDamaged = enemy.CheckForPlayer(_x, _y);
-
-	if (_isDamaged)
-	{
-		ReceiveAttack(enemy);
-	}
-}
+//void Player::CheckForPlayer(Enemy& enemy)
+//{
+//	_isDamaged = enemy.CheckForPlayer(_x, _y);
+//
+//	if (_isDamaged)
+//	{
+//		ReceiveAttack(enemy);
+//	}
+//}
 
 // Receive an attack from an enemy. 
 // TODO: Replace 'Enemy &enemy' with an integer damage value. An enemy should call this if it can attack the player.
@@ -31,7 +31,6 @@ void Player::ReceiveAttack(Enemy& enemy)
 	_lastDamage = enemy.GetAttackDamage();
 	_health -= _lastDamage;
 }
-
 
 void Player::ResetDamageState()
 {
