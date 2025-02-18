@@ -34,6 +34,7 @@ public:
 protected:
 	ItemType _type{ ItemType::weapon };
 };
+
 class PotionItem : public Item
 {
 public:
