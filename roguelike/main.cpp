@@ -20,10 +20,34 @@ std::string options = R"(
 3. Exit
 )";
 
-std::string instructions = R"(Example instructional header.
-=============================
+std::string instructions = R"(
+ _____             _             _     
+/  __ \           | |           | |    
+| /  \/ ___  _ __ | |_ _ __ ___ | |___ 
+| |    / _ \| '_ \| __| '__/ _ \| / __|
+| \__/\ (_) | | | | |_| | | (_) | \__ \
+ \____/\___/|_| |_|\__|_|  \___/|_|___/                                                                             
+ =====================================
 
-Example instructions. Lorem ipsum and all that. 
+w = Move up
+a = Move left
+s = Move right
+d = Move down
+i = Check inventory
+q = Quit game
+
+ _____             _ 
+|  __ \           | |
+| |  \/ ___   __ _| |
+| | __ / _ \ / _` | |
+| |_\ \ (_) | (_| | |
+ \____/\___/ \__,_|_|
+ ====================
+
+Collect all the items and reach each room's door without being defeated by the enemies!                   
+                     
+
+
 )";
 
 void PrintTitle() {	std::cout << title << '\n'; }
