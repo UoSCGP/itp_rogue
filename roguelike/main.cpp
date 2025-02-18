@@ -25,7 +25,7 @@ int main()
 		grid.print_dungeon();
 
 		if (player.IsDamaged()) {
-			std::cout << "You were hit for " << player.GetLastDamageAmount() << std::endl; 
+			std::cout << "You were hit for " << player.GetLastDamageAmount() << '\n'; 
 		}
 
 		if (player.GetHealth() <= 0)
