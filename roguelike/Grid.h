@@ -4,14 +4,15 @@
 #include <random>
 
 #include "Enemy.h"
-
+#include "Player.h"
 #include "Item.h"
 
 class Grid {
 public:
-	Grid(int rowSize, int columnSize) 
+	Grid(int rowSize, int columnSize, Player *playerPtr) 
 		: _rowSize{rowSize},
 		  _colSize{columnSize},
+		_player{playerPtr},
 			mt{rd()},
 		enemy{3, 4}
 	{
@@ -67,13 +68,15 @@ public:
 
 	void ItemCollected();
 
-	
-	bool isDamaged{ false };
-	int GetDamage() { return lastDamage; }
+
 	void ResetDamageState();
-	int GetHealth() { return health; }
 
 private:
+	//Inventory variables
+	// std::vector<int> inventory = { 0, 0, 0, 0 };
+	std::vector<int> itemLimit = { 100, 100, 100, 100 };
+	enum invEnum { treasure, potion, weapon, armour };
+
 	bool shouldPrintInv{ false };
 	bool shouldPrintFullMessage{ false };
 
@@ -83,8 +86,6 @@ private:
 	void initialize_cells();
 	void generate_dungeon();
 
-	void ReceiveAttack();
-
 	std::vector< std::vector<char>> grid;
 
 	std::random_device rd;
@@ -93,14 +94,10 @@ private:
 	int _rowSize;
 	int _colSize;
 
-	int playerX{ 0 };
-	int playerY{ 0 };
-
 	Enemy enemy;
-	Player player;
+	Player *_player;
 
 	int health{ 20 };
-	int lastDamage{ 0 };
 
 	std::vector<Item*> inventory;
 };
