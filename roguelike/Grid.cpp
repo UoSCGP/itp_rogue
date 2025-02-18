@@ -62,8 +62,6 @@ void Grid::moveUp()
 		_player->SetX(_player->GetX() - 1);
 		enemy.MoveTowardsPlayer(_player->GetX(), _player->GetY(), grid, _colSize, _rowSize);
 	}
-
-	_player->CheckForPlayer(enemy);
 }
 
 void Grid::moveDown()
@@ -84,8 +82,7 @@ void Grid::moveDown()
 		_player->SetX(_player->GetX() + 1);
 		enemy.MoveTowardsPlayer(_player->GetX(), _player->GetY(), grid, _colSize, _rowSize);
 	}
-	
-	_player->CheckForPlayer(enemy);
+
 }
 
 void Grid::moveLeft()
@@ -104,9 +101,7 @@ void Grid::moveLeft()
 		
 		_player->SetY(_player->GetY() - 1);
 		enemy.MoveTowardsPlayer(_player->GetX(), _player->GetY(), grid, _colSize, _rowSize);
-	}
-
-	_player->CheckForPlayer(enemy);
+	};
 }
 
 void Grid::moveRight()
@@ -126,8 +121,6 @@ void Grid::moveRight()
 		_player->SetY(_player->GetY() + 1);
 		enemy.MoveTowardsPlayer(_player->GetX(), _player->GetY(), grid, _colSize, _rowSize);
 	}
-
-	_player->CheckForPlayer(enemy);
 }
 
 bool Grid::checkForTreasure()

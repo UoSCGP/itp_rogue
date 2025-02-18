@@ -55,8 +55,6 @@ public:
 	void printInventory();
 	void checkInventory();
 	void updateInventory(int itemNumber, int amount);
-	int GetPlayerX();
-	int GetPlayerY();
 
 	int getRemainingTreasureCount() { return treasureRemaining; }
 
@@ -67,10 +65,6 @@ public:
 	static const char exitSymbol;
 
 	void ItemCollected();
-
-
-	void ResetDamageState();
-
 private:
 	//Inventory variables
 	// std::vector<int> inventory = { 0, 0, 0, 0 };

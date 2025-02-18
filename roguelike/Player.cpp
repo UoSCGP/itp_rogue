@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <iostream>
 
+#include "Enemy.h"
+
 // Attack an enemy.
 void Player::DoAttack(int x, int y) {
 	int damageDelt = rand() % 11;

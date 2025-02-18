@@ -1,6 +1,7 @@
 #pragma once
 
-#include "Enemy.h"
+class Enemy;
+
 class Player
 {
 private:
@@ -30,7 +31,6 @@ public:
 	void DoAttack(int x, int y);
 
 	// Receiving attack
-	void CheckForPlayer(Enemy& enemy);
 	void ReceiveAttack(Enemy& enemy);
 
 	void ResetDamageState();

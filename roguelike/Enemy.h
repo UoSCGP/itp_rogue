@@ -3,6 +3,8 @@
 #include <vector>
 #include <random>
 
+#include "Player.h"
+
 class Enemy {
 public:
 	Enemy() {}
