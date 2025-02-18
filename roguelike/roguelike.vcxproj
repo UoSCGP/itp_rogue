@@ -132,12 +132,15 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Grid.cpp" />
+    <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PickUpItem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Grid.h" />
+    <ClInclude Include="Inventory.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Item.h" />
   </ItemGroup>

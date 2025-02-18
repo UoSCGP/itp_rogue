@@ -3,7 +3,7 @@
 #include <vector>
 #include <iostream>
 
-#include "Player.h"
+class Player;
 
 enum ItemType
 {
@@ -30,7 +30,12 @@ public:
 	static std::string getTypeString(ItemType type);
 	static ItemType getTypeFromString(std::string type);
 
+	ItemType GetType() {
+		return _type;
+	}
+
 	Item() {}
+	virtual ~Item() {};
 protected:
 	ItemType _type{ ItemType::weapon };
 };
