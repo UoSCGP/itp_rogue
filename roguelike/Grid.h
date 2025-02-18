@@ -7,8 +7,6 @@
 #include "Player.h"
 #include "Item.h"
 
-#include "Player.h"
-
 class Grid {
 public:
 	Grid(int rowSize, int columnSize, Player *playerPtr) 
@@ -56,7 +54,7 @@ public:
 
 	void printInventory();
 	void checkInventory();
-	void updateInventory(int itemNumber, int amount);
+
 
 	int getRemainingTreasureCount() { return treasureRemaining; }
 
@@ -65,12 +63,6 @@ public:
 	static const char wallSymbol;
 	static const char emptySymbol;
 	static const char exitSymbol;
-
-	void ItemCollected();
-
-	bool isDamaged{ false };
-	int GetDamage() { return lastDamage; }
-	void ResetDamageState();
 
 private:
 	//Inventory variables
@@ -97,9 +89,5 @@ private:
 	Enemy enemy;
 	Player *_player;
 
-	int health{ 20 };
-	int lastDamage{ 0 };
-	bool isDamaged{ false };
-	int GetDamage() { return lastDamage; }
 	std::vector<Item*> inventory;
 };

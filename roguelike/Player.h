@@ -1,7 +1,7 @@
 #pragma once
-
-#include "Enemy.h"
 #include "Inventory.h"
+
+class Enemy;
 
 class Player
 {

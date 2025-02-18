@@ -130,15 +130,15 @@ void Grid::moveRight()
 bool Grid::checkForTreasure()
 {
 	//ItemCollected();
-	if (grid[playerX][playerY] == Item::itemSymbol)
+	if (grid[_player->GetX()][_player->GetY()] == Item::itemSymbol)
 	{
-		grid[playerX][playerY] = emptySymbol;
-		player.PickUpItem();
+		grid[_player->GetX()][_player->GetY()] = emptySymbol;
+		_player->PickUpItem();
 	}
 
 	if (grid[_player->GetX()][_player->GetY()] == treasureSymbol)
 	{
-		collectItem(invEnum::treasure);
+		_player->PickUpItem();
 		return true;
 	}
 
@@ -155,29 +155,10 @@ bool Grid::checkForExit()
 	return false;
 }
 
-//void Grid::collectTreasure()
-//{
-//	grid[_player->GetX()][_player->GetY()] = emptySymbol;
-//	treasureRemaining--;
-//}
-
-void Grid::collectItem(int item)
-{
-	/*if (inventory[item] < itemLimit[item])
-	{
-		grid[_player->GetX()][_player->GetY()] = emptySymbol;
-		if (item == invEnum::treasure)
-			treasureRemaining--;
-		updateInventory(item, 1);
-	}
-	else
-		shouldPrintFullMessage = true;*/
-}
-
 void Grid::printInventory()
 {
 	//Call inventory.GetInventory
-	auto inventoryCount = player.GetInventoryStats();
+	auto inventoryCount = _player->GetInventoryStats();
 
 	std::cout << "armour Items: " << inventoryCount[0] << " weapon Items: " << inventoryCount[1] << " potion Items: " << inventoryCount[2] << '\n';
  }
@@ -192,12 +173,12 @@ void Grid::checkInventory()
 
 	if (choice == 1)
 	{
-		player.PrintItems(ItemType::armour);
+		_player->PrintItems(ItemType::armour);
 
 		std::cout << "select the item to equip: ";
 		std::cin >> equip;
 
-		player.EquipArmour(equip);
+		_player->EquipArmour(equip);
 	}
 }
 
