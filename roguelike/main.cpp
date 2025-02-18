@@ -16,11 +16,19 @@ std::string title = R"(   _____    __________                            .__  ._
 
 std::string options = R"(
 1. Play
-2. Exit
+2. How to play
+3. Exit
+)";
+
+std::string instructions = R"(Example instructional header.
+=============================
+
+Example instructions. Lorem ipsum and all that. 
 )";
 
 void PrintTitle() {	std::cout << title << '\n'; }
 void PrintMenuOptions() { std::cout << options << '\n'; }
+void PrintInstructions() { std::cout << instructions << '\n'; }
 
 int main()
 {
@@ -54,9 +62,14 @@ int main()
 			isGameRunning = true; 
 			break;
 		case '2':
+			PrintInstructions();
+			break;
+		case '3':
 			return 0;
 		default:
-			std::cout << "The entered option was invalid, try again.\n";
+			//std::cout << "The entered option was invalid, try again.\n";
+			system("cls");
+			PrintTitle();			
 			break;
 		}
 	}
