@@ -1,10 +1,26 @@
 #include <iostream>
 #include <array>
+#include <string>
 #include <random>
 #include <Windows.h>
 #include "Grid.h"
 #include "Player.h"
 #include "Enemy.h"
+
+std::string title = R"(   _____    __________                            .__  .__ __              ________                       
+  /  _  \   \______   \ ____   ____  __ __   ____ |  | |__|  | __ ____    /  _____/_____    _____   ____  
+ /  /_\  \   |       _//  _ \ / ___\|  |  \_/ __ \|  | |  |  |/ // __ \  /   \  ___\__  \  /     \_/ __ \ 
+/    |    \  |    |   (  <_> ) /_/  >  |  /\  ___/|  |_|  |    <\  ___/  \    \_\  \/ __ \|  Y Y  \  ___/ 
+\____|__  /  |____|_  /\____/\___  /|____/  \___  >____/__|__|_ \\___  >  \______  (____  /__|_|  /\___  >
+        \/          \/      /_____/             \/             \/    \/          \/     \/      \/     \/ )";
+
+std::string options = R"(
+1. Play
+2. Exit
+)";
+
+void PrintTitle() {	std::cout << title << '\n'; }
+void PrintMenuOptions() { std::cout << options << '\n'; }
 
 int main()
 {
@@ -16,10 +32,36 @@ int main()
 
 	// Set the player reference for the Enemy class.
 	
+	bool isGameRunning{ false };
+	bool isMenuRunning{ true };
 
-	bool isRunning{ true };
+	// Print the title screen header.
+	PrintTitle();
 
-	while (isRunning)
+	// Manage the main menu.
+	while (isMenuRunning) 
+	{
+		PrintMenuOptions();
+
+		char menuChoice;
+		std::cin >> menuChoice;
+
+		switch (menuChoice) 
+		{
+		case '1':
+			system("cls");
+			isMenuRunning = false;
+			isGameRunning = true; 
+			break;
+		case '2':
+			return 0;
+		default:
+			std::cout << "The entered option was invalid, try again.\n";
+			break;
+		}
+	}
+
+	while (isGameRunning)
 	{
 		system("cls");
 		grid.print_dungeon();
@@ -31,7 +73,7 @@ int main()
 		if (player.GetHealth() <= 0)
 		{ 
 			std::cout << "You are dead!";
-			isRunning = false;
+			isGameRunning = false;
 			break;
 		}
 
@@ -53,7 +95,7 @@ int main()
 			grid.moveRight();
 			break;
 		case 'q':
-			isRunning = false;
+			isGameRunning = false;
 			break;
 		case 'c':
 			grid.clearTreasure();
