@@ -5,11 +5,10 @@
 
 const char Enemy::enemySymbol = '!';
 
-void Enemy::MoveTowardsPlayer(int playerX, int playerY, 
-	const std::vector< std::vector<char>>& grid, int colSize, int rowSize)
+void Enemy::MoveTowardsPlayer(const std::vector< std::vector<char>>& grid, int colSize, int rowSize)
 {
 	// move right towards player
-	if (x < playerX)
+	if (x < _player->GetX())
 	{
 		if ((x < rowSize - 1) &&
 			(grid[x + 1][y] != Grid::wallSymbol))
@@ -19,7 +18,7 @@ void Enemy::MoveTowardsPlayer(int playerX, int playerY,
 		}
 	}
 
-	if (x > playerX) 
+	if (x > _player->GetX()) 
 	{	
 		if ((x > 1) &&
 			(grid[x - 1][y] != Grid::wallSymbol))
@@ -29,7 +28,7 @@ void Enemy::MoveTowardsPlayer(int playerX, int playerY,
 		}
 	}
 
-	if (y < playerY)
+	if (y < _player->GetY())
 	{
 		if ((y < colSize - 1) &&
 			(grid[x][y + 1] != Grid::wallSymbol))
@@ -39,7 +38,7 @@ void Enemy::MoveTowardsPlayer(int playerX, int playerY,
 		}
 	}
 
-	if (y > playerY)
+	if (y > _player->GetY())
 	{
 		if ((y > 1) &&
 			(grid[x][y - 1] != Grid::wallSymbol))
@@ -50,10 +49,10 @@ void Enemy::MoveTowardsPlayer(int playerX, int playerY,
 	}
 }
 
-bool Enemy::CheckForPlayer(int &playerX, int &playerY) 
+bool Enemy::CheckForAdjacentPlayer() 
 {
-	int xDifference = abs(getY() - playerY);
-	int yDifference = abs(getX() - playerX);
+	const int xDifference = abs(getY() - _player->GetX());
+	const int yDifference = abs(getX() - _player->GetY());
 
 	return (xDifference == 1 && yDifference == 0) || (xDifference == 0 && yDifference == 1);
 }

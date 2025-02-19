@@ -9,12 +9,12 @@
 
 class Grid {
 public:
-	Grid(int rowSize, int columnSize, Player *playerPtr) 
+	Grid(int rowSize, int columnSize, std::shared_ptr<Player> playerPtr) 
 		: _rowSize{rowSize},
 		  _colSize{columnSize},
 		_player{playerPtr},
 			mt{rd()},
-		enemy{3, 4}
+		enemy{3, 4, playerPtr}
 	{
 		initialize_cells();
 	};
@@ -87,7 +87,7 @@ private:
 	int _colSize;
 
 	Enemy enemy;
-	Player *_player;
+    std::shared_ptr<Player> _player;
 
 	std::vector<Item*> inventory;
 };

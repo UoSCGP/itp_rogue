@@ -11,10 +11,8 @@ int main()
 	const int ColumnSize = 100;
 	const int RowSize = 20;
 
-	Player player;
-	Grid grid(RowSize, ColumnSize, &player);
-
-	// Set the player reference for the Enemy class.
+    std::shared_ptr<Player> player = std::make_shared<Player>();
+	Grid grid(RowSize, ColumnSize, player);
 	
 
 	bool isRunning{ true };
@@ -24,11 +22,11 @@ int main()
 		system("cls");
 		grid.print_dungeon();
 
-		if (player.IsDamaged()) {
-			std::cout << "You were hit for " << player.GetLastDamageAmount() << '\n'; 
+		if (player->IsDamaged()) {
+			std::cout << "You were hit for " << player->GetLastDamageAmount() << '\n'; 
 		}
 
-		if (player.GetHealth() <= 0)
+		if (player->GetHealth() <= 0)
 		{ 
 			std::cout << "You are dead!";
 			isRunning = false;

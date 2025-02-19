@@ -64,7 +64,7 @@ void Grid::moveUp()
 			_player->DoAttack(0, 0);
 		}
 		_player->SetX(_player->GetX() - 1);
-		enemy.MoveTowardsPlayer(_player->GetX(), _player->GetY(), grid, _colSize, _rowSize);
+		enemy.MoveTowardsPlayer(grid, _colSize, _rowSize);
 	}
 }
 
@@ -84,7 +84,7 @@ void Grid::moveDown()
 		}
 		
 		_player->SetX(_player->GetX() + 1);
-		enemy.MoveTowardsPlayer(_player->GetX(), _player->GetY(), grid, _colSize, _rowSize);
+		enemy.MoveTowardsPlayer(grid, _colSize, _rowSize);
 	}
 
 }
@@ -104,7 +104,7 @@ void Grid::moveLeft()
 		}
 		
 		_player->SetY(_player->GetY() - 1);
-		enemy.MoveTowardsPlayer(_player->GetX(), _player->GetY(), grid, _colSize, _rowSize);
+		enemy.MoveTowardsPlayer(grid, _colSize, _rowSize);
 	};
 }
 
@@ -123,7 +123,7 @@ void Grid::moveRight()
 		}
 		
 		_player->SetY(_player->GetY() + 1);
-		enemy.MoveTowardsPlayer(_player->GetX(), _player->GetY(), grid, _colSize, _rowSize);
+		enemy.MoveTowardsPlayer(grid, _colSize, _rowSize);
 	}
 }
 
