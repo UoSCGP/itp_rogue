@@ -7,13 +7,11 @@
 
 class Enemy {
 public:
-	Enemy() {}
-	Enemy(int xPos, int yPos) : x{ xPos }, y{ yPos } { }
-	Enemy(int xPos, int yPos, int hp) : x{ xPos }, y{ yPos }, health{ hp } {}
+    Enemy(std::shared_ptr<Player> playerPtr) : _player{playerPtr} {}
+    Enemy(const int xPos, const int yPos, std::shared_ptr<Player> playerPtr) : x{xPos}, y{yPos}, _player{playerPtr} {}
+    Enemy(const int xPos, const int yPos, const int hp, std::shared_ptr<Player> playerPtr) : x{xPos}, y{yPos}, health{hp}, _player{playerPtr} {}
 
-	void MoveTowardsPlayer(int playerX, int playerY, 
-		const std::vector< std::vector<char>>& grid, 
-		int colSize, int rowSize);
+	void MoveTowardsPlayer(const std::vector< std::vector<char>>& grid, int colSize, int rowSize);
 
 	int getX() { return x; }
 	int getY() { return y; }
@@ -22,14 +20,12 @@ public:
 
 	int GetAttackDamage();
 
-	void setPosition(int xPos, int yPos) {
+	void setPosition(const int xPos, const int yPos) {
 		x = xPos;
 		y = yPos;
 	}
 
 	static const char enemySymbol;
-
-	static void SetPlayerReference(Player* playerPtr) { _player = playerPtr; }
 
 private:
 	int x{ 0 }, y{ 0 };
@@ -39,7 +35,7 @@ private:
 	std::random_device rd;
 	std::mt19937 mt;
 
-	static Player* _player;
+    std::shared_ptr<Player> _player;
 	
-	bool CheckForPlayer(int &playerX, int &playerY);
+	bool CheckForAdjacentPlayer();
 };
